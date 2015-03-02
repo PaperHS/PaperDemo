@@ -24,6 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ItemListActivity" />
         </activity>
+        <activity
+            android:name=".dummy.AwesomeSearchbarActivity"
+            android:label="@string/title_activity_awesome_searchbar" >
+        </activity>
     </application>
 
 </manifest>

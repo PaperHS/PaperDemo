@@ -2,9 +2,11 @@ package com.paper.paperdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+
+import com.paper.paperdemo.dummy.PullScrollFragment;
 
 
 /**
@@ -35,16 +37,28 @@ public class ItemDetailActivity extends ActionBarActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
-        if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-            ItemDetailFragment fragment = new ItemDetailFragment();
-            fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
+//        if (savedInstanceState == null) {
+//            // Create the detail fragment and add it to the activity
+//            // using a fragment transaction.
+//            Bundle arguments = new Bundle();
+//            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+//            ItemDetailFragment fragment = new ItemDetailFragment();
+//            fragment.setArguments(arguments);
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.item_detail_container, fragment)
+//                    .commit();
+//        }
+        String itemid = getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID);
+        if (itemid.equals("1")){
+        PullScrollFragment fragment = new PullScrollFragment();
+        getSupportFragmentManager().beginTransaction()
                     .add(R.id.item_detail_container, fragment)
+                    .commit();}
+        else if (itemid.equals("2")){
+            WaterIndicatorFragment fragment = new WaterIndicatorFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.item_detail_container,fragment)
                     .commit();
         }
     }
